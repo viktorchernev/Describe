@@ -1,0 +1,60 @@
+/* page */
+html, body {
+
+    height:100%;
+    width:100%;
+    margin:0;
+} 
+
+
+
+/* small listree */
+.listree-submenu-heading {
+	cursor:pointer;
+	/* text-decoration: underline; */
+}
+ul.listree {
+	list-style:none; 
+	padding-left:47px; 
+	margin-top: 0px; 
+	margin-bottom: 0px;
+}
+ul.listree-submenu-items {
+	list-style:none;
+	border-left:1px dashed #000;
+	white-space:nowrap;
+	margin-right:4px;
+	padding-left:20px;
+}
+.scrollable-menu {
+	height:auto;
+	max-width:800px;
+	overflow-y:hidden;
+}
+
+
+
+/* big listree */
+ul.mainlistree  {
+	list-style:none; 
+	padding-left:5px; 
+	margin-top: 0px; 
+	margin-bottom: 0px;
+}
+.mainlistree-submenu-heading {
+	cursor:pointer;
+}
+ul.mainlistree-submenu-items {
+	list-style:none;
+	border-left:1px dashed #000;
+	white-space:nowrap;
+	margin-right:4px;
+	padding-left:20px;
+}
+
+
+/* breadcrumb */
+a.breadcrumb { color: black; text-decoration: underline; cursor: pointer;}
+a.breadcrumb:visited { color: black; }
+a.breadcrumb:hover { color: black; }
+a.breadcrumb:active { color: black; }

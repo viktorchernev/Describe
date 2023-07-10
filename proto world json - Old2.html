@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><meta name="description" content="Created by #Describe TestGadget v 8.0"><meta charset="utf-8"><title>World in lists - Describe Compiler v0.9</title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author" content=""><style>.listree-submenu-heading{cursor:pointer}ul.listree{list-style:none}ul.listree-submenu-items{list-style:none;border-left:1px dashed #000;white-space:nowrap;margin-right:4px;padding-left:20px}div.listree-submenu-heading.collapsed:before{content:"+";margin-right:4px}div.listree-submenu-heading.expanded:before{content:"-";margin-right:4px}.scrollable-menu{height:auto;max-width:800px;overflow-y:hidden}</style>
+
+
+
+</head>
+<body>
+	
+
+
+
+
+
+
+
+
+<script>
+var json;
+
+function addFooter0(json) {
+
+	var html = "<div style='padding: 10px; margin: 0px; width: auto; font-style: italic; color: #333;'>"
+	html += json.timestamp;
+	html += "<br />";
+	html += json.version;
+	html += "</div>"
+
+	document.body.innerHTML += html;
+	
+	//console.log("Footer added");
+	//console.log(json.timestamp);
+	//console.log(json.version);
+}
+function addFooter(json) {
+
+	//https://www.w3schools.com/howto/howto_css_fixed_footer.asp
+	var html = "<div style='position: fixed; left: 0; bottom: 0; width: 100%;'>"
+	html += "<div style='background-color: #111; color: white; font-style: italic; margin: 10px; padding: 10px;'>"
+	html += json.timestamp;
+	html += "<br />";
+	html += json.version;
+	html += "</div>";
+	html += "</div>";
+
+	document.body.innerHTML += html;
+	
+	//console.log("Footer added");
+	//console.log(json.timestamp);
+	//console.log(json.version);
+}
+function addNavBar0(json) {
+
+	if(json.items.length != 1) {
+		console.log('FATAL: Unknown template!');
+		return;
+	}
+	if(json.items[0].text != 'ROOT') {
+		console.log('FATAL: Unknown template!');
+		return;
+	}
+	
+	var html = "<div style='padding: 10px; margin: 0px; width: auto;'>";
+	var root = json.items[0];
+	for(var i = 0; i < root.items.length; i++) {
+	
+		html += "<span style='width: auto;'>• " + root.items[i].text + "</span>&emsp;";
+	}
+	html += "<br /><hr /></div>"
+	
+	//console.log(html);
+	document.body.innerHTML += html;
+}
+function addNavBar(json) {
+
+	//https://www.w3schools.com/css/css_navbar_horizontal.asp
+	if(json.items.length != 1) {
+		console.log('FATAL: Unknown template!');
+		return;
+	}
+	if(json.items[0].text != 'ROOT') {
+		console.log('FATAL: Unknown template!');
+		return;
+	}
+	
+	//the HTML
+	var html = "<ul class='navbar'>";
+	var root = json.items[0];
+	for(var i = 0; i < root.items.length; i++) {
+
+		html += "<li class='navbar'><a href=''>" + root.items[i].text + "</a></li>";
+	}
+	html += "<li class='navbar' style='float:right'><a class='navbaractive' href=''>" + "LOG OUT" + "</a></li>";
+	html += "</ul>"
+	
+	//the CSS
+	var css = "<style>";
+	css += "ul.navbar{list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #333}";
+	css += "li.navbar{float: left}";
+	css += "li.navbar a{display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none}";
+	css += "li.navbar a:hover:not(.active){background-color: #111}";
+	css += ".navbaractive{background-color: #04AA6D}";
+	css += "</style>";
+	
+	//console.log(html);
+	document.body.innerHTML += css;
+	document.body.innerHTML += html;
+}
+async function loadJson() {
+
+	console.log("Proto World parsing sequence started");
+	var response = await fetch('./data.json');
+	json = await response.json();
+	console.log("Json fetched:");
+	console.log(json);
+	
+	addNavBar(json);
+	
+	document.body.innerHTML += "<div style='background-color:lime; position:absolute; height:100%; width: 20%;'></div>";
+	document.body.innerHTML += "<div style='background-color:tomato; position:absolute; height:100%; width: 80%; left:20%; margin-right:14px;'></div>";
+	
+	addFooter(json);
+}
+loadJson();
+
+
+
+
+
+
+
+
+//!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).listree=t()}(this,(function(){"use strict";return function(){const e=document.getElementsByClassName("listree-submenu-heading");Array.from(e).forEach((function(e){e.classList.add("collapsed"),e.nextElementSibling.style.display="none",e.addEventListener("click",(function(t){const n=t.target.nextElementSibling;"none"==n.style.display?(e.classList.remove("collapsed"),e.classList.add("expanded"),n.style.display="block"):(e.classList.remove("expanded"),e.classList.add("collapsed"),n.style.display="none"),t.stopPropagation()}))}))}}));listree();
+
+</script></body></html>
